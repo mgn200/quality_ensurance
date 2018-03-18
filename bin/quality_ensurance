@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require "quality_ensurance"
+command = ARGV.first
+
+if command == 'install'
+  QualityEnsurance.copy_config_files
+  puts "Configs are copied to 'config/'(specific for i18n-tasks) and '.quality'(for other linters)"
+elsif command == 'check'
+  QualityEnsurance.check
+else
+  puts "Only 'install' and 'check'  commands are available. 'Install' wil copy required config files into .quality folder.
+        'Check' will run linters and print status."
+end
